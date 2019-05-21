@@ -12,7 +12,7 @@
 
 
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\step1.png)
+![](./image/step1.png)
 
 
 
@@ -54,7 +54,7 @@ Endorsing peer가 어플리케이션 SDK로부터 트랜잭션 요청(제안)을
 
 
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\step2.png)
+![](./image/step2.png)
 
 
 
@@ -62,7 +62,7 @@ Endorsing peer가 어플리케이션 SDK로부터 트랜잭션 요청(제안)을
 
 어플리케이션 SDK이 **endorsing peer로 부터 돌려받은 proposal response를 비교하는 작업**을 거칩니다. 이때 어플리케이션 SDK는 **Endorsement policy**(경모 선배가 그렇게 강조하던 체인코드 폴리시가 이걸 말하는 겁니다)**를 만족하는 proposal response가 왔는지(특정 endorsing peer로 부터 결과를 받았는지) 검토**합니다. 이 단계에서 SDK가 endorsement policy를 검토하지 않는다고 해도 committing 단계에서 각 피어가 별도로 검토합니다
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\step3.png)
+![](./image/step3.png)
 
 
 
@@ -74,7 +74,7 @@ Orderer가 트랜잭션을 정렬하는데 **합의하는 방식은 기본적으
 
 
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\step4.png)
+![](./image/step4.png)
 
 
 
@@ -84,7 +84,7 @@ Orderer가 트랜잭션을 정렬하는데 **합의하는 방식은 기본적으
 
 
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\step5.png)
+![](./image/step5.png)
 
 
 
@@ -94,7 +94,7 @@ Orderer가 트랜잭션을 정렬하는데 **합의하는 방식은 기본적으
 
 
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\step6.png)
+![](./image/step6.png)
 
 
 
@@ -106,7 +106,7 @@ Orderer가 트랜잭션을 정렬하는데 **합의하는 방식은 기본적으
 
 
 
-![](C:\Users\glafu\Desktop\eunsu\캡스톤디자인\BookQualityAssurance\image\검수 시스템 트랜잭션 흐름.png)
+![](./image/검수 시스템 트랜잭션 흐름.png)
 
 
 
