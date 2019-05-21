@@ -106,7 +106,7 @@ Orderer가 트랜잭션을 정렬하는데 **합의하는 방식은 기본적으
 
 
 
-![](./image/검수 시스템 트랜잭션 흐름.png)
+![](./image/transaction flow.png)
 
 
 
