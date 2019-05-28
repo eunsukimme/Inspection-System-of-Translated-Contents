@@ -1,0 +1,85 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+namespace org.example.mynetwork
+// 객체(추상)
+abstract asset Object identified by Obj_id {
+  o String Obj_id      // 객체 식별자
+}
+// 네트워크 참여자(추상)
+abstract participant Peer identified by P_id {
+  o String P_id         // 참여자 식별자
+}
+ // 네트워크 참여자 정보  
+ concept Info {  
+   o String name  
+   o String age  
+}  
+// 검수 받는 책
+asset Book extends Object {
+  o String ISBN         // 책의 고유 넘버
+  o String name         // 책 이름
+  o String description   // 책 설명
+  --> Client client      // 검수를 등록한 client
+  o Boolean valid   // 유효한지 아닌지 체크
+  o String[] select_comment   // 투표에서 선택된 검수
+  o String[] feedbacks   // 검수 이력들
+  o String[] vote_qa   // 투표된 qa들 보여준다.
+  o Double qa_num      // 참여 qa수
+  o Double[] qa_selec   // qa 투표
+  --> QA[] QAs         // 검수에 참여한 QA들
+  --> QA[] order_qa   // 검수에 참여한 qa들의 순서
+}
+// 검수를 요청하는 클라이언트
+participant Client extends Peer {
+  o Info info               // 클라이언트 정보
+  --> Object[] books   // 검수를 요청한 객체들
+}
+// 검수를 진행하는 QA
+participant QA extends Peer {
+  o Info info               // 클라이언트 정보
+  o String[] contributes   // 참여한 검수 기록들
+  o Double value         // 기여도
+  o Double select_value   // 투표로 선택된 기여도
+  o String[] hash
+  --> Book[] contributed_book_list      // 검수한 객체들
+}
+// 책 검수요청 등록
+transaction createBook {
+  o String ISBN         
+  o String name
+  o String description
+  --> Client client      // 검수를 요청한 client
+}
+// 검수 내용
+transaction addFeedback {
+  o String comment
+  --> Book book
+  --> QA qa
+}
+// qa에게 코멘트 남기기
+transaction hashtag{
+ o String qa_comment
+ --> QA qa
+}
+// 특정 qa의 검수 투표
+transaction vote_qa{
+  --> Book book
+  --> QA qa
+}
+// 최다득표 qa의 내용 선택
+transaction select_feedback{
+  --> Book book
+  --> QA qa   // 입력금지
+}
