@@ -97,6 +97,8 @@ fabric-dev-servers 폴더에는 런타임을 컨트롤할 수 있는 몇 가지 
 런타임을 중지하고 싶을 땐 fabric-dev-servers/stopFabric.sh 를, 다시 시작하고 싶을 땐 fabric-dev-servers/startFabric.sh 스크립트를 실행하면 됩니다.
 중지하고 난 뒤 fabric-dev-servers/teardownFabric.sh를 실행하게 되면, 다음 번에 다시 start 할 때 새롭게 PeerAdmin 카드를 생성해 주어야 합니다.
 
+### STEP 4-1: Install Dependencies
+
 ### STEP 5: Start the web app ("Playground")
 
 이제 본격적으로 Playground를 테스트 할 수 있습니다. 다음 명령을 실행해 줍니다.
@@ -106,6 +108,8 @@ fabric-dev-servers 폴더에는 런타임을 컨트롤할 수 있는 몇 가지 
 ```
 
 위 명령은 자동적으로 http://localhost:8080/login 창을 띄울 것입니다. 이전에 만든 PeerAdminCard인 PeerAdmin@hlfv1 이 "My Business Network"화면에 나타난 것을 확인할 수 있습니다. 만약 보이지 않는다면 런타임을 재시작 해줍니다.\
+\
+<img width="1680" alt="Screen Shot 2019-09-11 at 6 32 55 PM" src="https://user-images.githubusercontent.com/31213226/64685908-b8c25c00-d4c2-11e9-8627-748c15ed9e35.png">\
 \
 이제 Playground 에서 TCQAS를 테스트 할 수 있습니다! Playground를 다루는 자세한 방법은 [공식 Document](https://hyperledger.github.io/composer/latest/tutorials/playground-tutorial.html)를 참고하세요.
 
