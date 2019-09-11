@@ -11,7 +11,10 @@ Hyperledger기반 번역 콘텐츠 검수 시스템
   - [STEP 2: Install Playground](#step-2-install-playground)
   - [STEP 3: Clone Repository](#step-3-clone-repository)
   - [STEP 4: Starting and stopping Hyperledger Fabric](#step-4-starting-and-stopping-hyperledger-fabric)
-  - [STEP 5: Start the web app ("Playground")](#step-5-start-the-web-app-playground)
+  - [STEP 5: Install Dependencies](#step-5-install-dependencies)
+  - [STEP 6: Deploy the business network](#step-6-deploy-the-business-network)
+  - [STEP 7: Start the web app ("Playground")](#step-7-start-the-web-app-playground)
+- [API Reference](#api-reference)
 - [License](#license)
 - [Acknowledgments](#acknowledgments)
 
@@ -97,9 +100,45 @@ fabric-dev-servers 폴더에는 런타임을 컨트롤할 수 있는 몇 가지 
 런타임을 중지하고 싶을 땐 fabric-dev-servers/stopFabric.sh 를, 다시 시작하고 싶을 땐 fabric-dev-servers/startFabric.sh 스크립트를 실행하면 됩니다.
 중지하고 난 뒤 fabric-dev-servers/teardownFabric.sh를 실행하게 되면, 다음 번에 다시 start 할 때 새롭게 PeerAdmin 카드를 생성해 주어야 합니다.
 
-### STEP 4-1: Install Dependencies
+### STEP 5: Install Dependencies
 
-### STEP 5: Start the web app ("Playground")
+qa-network 폴더로 이동하고 package.json에 명시된 dependencies를 설치해 줍시다
+
+```
+cd ../qa-network && npm install
+```
+
+### STEP 6: Deploy the business network
+
+하이퍼레저 패브릭에 TCQAS business network를 배포하기 위해선 peer에 해당 네트워크를 설치해야 하며, 그런 다음 business network를 시작할 수 있습니다.
+그리고 network administrator를 위한 새로운 participant, identity, associated card 가 만들어져야합니다.
+마지막으로, network administrator의 business network card가 import되어야 하며, 그런 다음 network는 ping 요청에 응답할 수 있게 됩니다.\
+\
+TCQAS network를 설치하기 위해, qa-network 경로에서 다음 명령을 실행해 줍니다.
+
+```
+composer network install --card PeerAdmin@hlfv1 --archiveFile qa-network@0.0.1.bna
+```
+
+network를 시작해 주기 위해 다음 명령을 실행해 줍니다.
+
+```
+composer network start --networkName qa-network --networkVersion 0.0.1 --networkAdmin admin --networkAdminEnrollSecret adminpw --card PeerAdmin@hlfv1 --file networkadmin.card
+```
+
+network administrator의 identity를 business network card로 import하기 위해 다음 명령을 실행해 줍니다.
+
+```
+composer card import --file networkadmin.card
+```
+
+자, 이제 TCQAS network가 정상적으로 배포되었는지 확인하기 위해 다음 명령을 실행해 줍니다.
+
+```
+composer network ping --card admin@qa-network
+```
+
+### STEP 7: Start the web app ("Playground")
 
 이제 본격적으로 Playground를 테스트 할 수 있습니다. 다음 명령을 실행해 줍니다.
 
@@ -109,9 +148,21 @@ fabric-dev-servers 폴더에는 런타임을 컨트롤할 수 있는 몇 가지 
 
 위 명령은 자동적으로 http://localhost:8080/login 창을 띄울 것입니다. 이전에 만든 PeerAdminCard인 PeerAdmin@hlfv1 이 "My Business Network"화면에 나타난 것을 확인할 수 있습니다. 만약 보이지 않는다면 런타임을 재시작 해줍니다.\
 \
-<img width="1680" alt="Screen Shot 2019-09-11 at 6 32 55 PM" src="https://user-images.githubusercontent.com/31213226/64685908-b8c25c00-d4c2-11e9-8627-748c15ed9e35.png">\
+<img width="1680" alt="Screen Shot 2019-09-11 at 8 16 51 PM" src="https://user-images.githubusercontent.com/31213226/64693042-5fadf480-d4d1-11e9-8b3b-25272643fe9a.png">\
 \
-이제 Playground 에서 TCQAS를 테스트 할 수 있습니다! Playground를 다루는 자세한 방법은 [공식 Document](https://hyperledger.github.io/composer/latest/tutorials/playground-tutorial.html)를 참고하세요.
+Connect Now를 클릭하면 Playground 에서 TCQAS network를 확인할 수 있습니다! Define 탭에서 network 모델을 확인할 수 있습니다.\
+\
+<img width="1680" alt="Screen Shot 2019-09-11 at 8 17 56 PM" src="https://user-images.githubusercontent.com/31213226/64693078-718f9780-d4d1-11e9-9c8d-de7cf4f4732a.png">\
+\
+Test 탭에서는 TCQAS network의 transaction을 직접 생성하면서 테스트할 수 있습니다. \
+\
+<img width="1680" alt="Screen Shot 2019-09-11 at 8 18 05 PM" src="https://user-images.githubusercontent.com/31213226/64693274-de0a9680-d4d1-11e9-942c-8782f539bf99.png">\
+\
+Playground를 다루는 자세한 방법은 [공식 Document](https://hyperledger.github.io/composer/latest/tutorials/playground-tutorial.html)를 참고하세요.
+
+## API Reference
+
+TCQAS의 Participant, Asset, Transaction에 대한 자세한 설명은 [API Reference](./apiReference.md)를 참고하세요.
 
 ## License
 
