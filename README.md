@@ -162,7 +162,7 @@ Playground를 다루는 자세한 방법은 [공식 Document](https://hyperledge
 
 ## API Reference
 
-TCQAS의 Participant, Asset, Transaction에 대한 자세한 설명은 [API Reference](./apiReference.md)를 참고하세요.
+TCQAS의 Participant, Asset, Transaction에 대한 자세한 설명은 [API Reference](https://github.com/eunsukimme/Translation-Content-Quality-Assurance-System/wiki/API-Reference)를 참고하세요.
 
 ## License
 
@@ -173,7 +173,7 @@ MIT
 CISC-S 2019 Submission 108
 
 - title: 블록체인 기반의 번역 콘텐츠 검수 시스템
-- paper: https://easychair.org/conferences/submission?a=22270556;submission=4474768
+- paper: [link](https://github.com/eunsukimme/Translation-Content-Quality-Assurance-System/blob/master/document/CISC-S_2019_paper_108.pdf)
 - Author Keywords:
   - blockchain
   - Inspection system
