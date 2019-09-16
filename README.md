@@ -170,6 +170,8 @@ MIT
 
 ## Acknowledgments
 
+TCQAS는 부경대 링크플러스 사업단의 지원을 받아 수행되었습니다.
+
 CISC-S 2019 Submission 108
 
 - title: 블록체인 기반의 번역 콘텐츠 검수 시스템
